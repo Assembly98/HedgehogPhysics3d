@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://ds8k880onls34"]
+
+[ext_resource type="PackedScene" uid="uid://cvupmen3rrl8p" path="res://dummyCopy.blend" id="1_1u3s4"]
+[ext_resource type="Script" uid="uid://cftgo2eb5vl7w" path="res://dummy_copy.gd" id="2_adlwp"]
+[ext_resource type="Script" uid="uid://cu775hjvaixn2" path="res://text_edit.gd" id="3_nbgy1"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_adlwp"]
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nbgy1"]
+
+[node name="dummyCopy" instance=ExtResource("1_1u3s4")]
+script = ExtResource("2_adlwp")
+
+[node name="Skeleton3D" parent="rig" index="0"]
+bones/0/position = Vector3(0.0012348889, 0.9853949, -0.055199996)
+bones/0/rotation = Quaternion(0.12581968, 0, 0, 0.99205315)
+bones/0/scale = Vector3(1, 0.99968946, 0.99997956)
+bones/1/rotation = Quaternion(-0.089489825, 0.00017314733, 0.002678999, 0.99598414)
+bones/2/rotation = Quaternion(-0.05242878, 0.00020790483, -0.0026765252, 0.99862105)
+bones/3/rotation = Quaternion(0.0016271526, -4.374596e-11, -5.5408077e-11, 0.9999987)
+bones/7/rotation = Quaternion(0.02576895, -0.0010649309, 0.026112193, 0.9993263)
+bones/8/rotation = Quaternion(-0.53462625, -0.44723275, -0.4609468, 0.54925925)
+bones/9/position = Vector3(-0.015914844, 0.22503032, -0.028306069)
+bones/9/rotation = Quaternion(-0.37995476, 0.6202153, -0.4933682, 0.47702748)
+bones/10/rotation = Quaternion(0.024064256, -0.059177365, -0.083048984, 0.9944958)
+bones/11/rotation = Quaternion(-0.039547667, 0.0299266, -0.7488653, 0.66086394)
+bones/11/scale = Vector3(1.3177056, 1.3177055, 1.3177055)
+bones/12/rotation = Quaternion(-0.00014587803, 0.038199447, -0.75077564, 0.6594519)
+bones/13/rotation = Quaternion(-0.013156049, 0.033865705, -0.74871784, 0.66189253)
+bones/15/rotation = Quaternion(-0.009182962, -0.038435183, -0.7119355, 0.7011322)
+bones/15/scale = Vector3(1.3177059, 1.3177058, 1.3177056)
+bones/16/rotation = Quaternion(-0.53462625, 0.44723275, 0.4609468, 0.54925925)
+bones/17/position = Vector3(0.015914844, 0.22503032, -0.02830607)
+bones/17/rotation = Quaternion(-0.37995476, -0.6202153, 0.4933682, 0.47702748)
+bones/18/rotation = Quaternion(0.024064248, 0.05917736, 0.08304895, 0.99449587)
+bones/19/rotation = Quaternion(-0.039547667, -0.0299266, 0.7488653, 0.66086394)
+bones/19/scale = Vector3(1.3177056, 1.3177054, 1.3177055)
+bones/20/rotation = Quaternion(-0.00014588083, -0.03819944, 0.75077564, 0.6594519)
+bones/21/rotation = Quaternion(-0.013156045, -0.033865713, 0.7487178, 0.6618926)
+bones/23/rotation = Quaternion(-0.009182959, 0.038435183, 0.7119356, 0.70113206)
+bones/23/scale = Vector3(1.3177056, 1.3177055, 1.3177056)
+bones/28/rotation = Quaternion(0.9848679, 0.018035276, -0.0013373917, 0.1723609)
+bones/29/rotation = Quaternion(0.09711219, -6.523674e-05, -0.0013889276, 0.9952725)
+bones/30/rotation = Quaternion(-0.5367089, -0.10281111, -0.025640339, 0.8370878)
+bones/31/rotation = Quaternion(-1.4315482e-08, 0.9676209, -0.25240824, 4.5231285e-08)
+bones/32/position = Vector3(-0.03799999, 0.025651809, 0.08677632)
+bones/33/rotation = Quaternion(0.98481536, -0.020786073, 0.0017916849, 0.17234713)
+bones/34/rotation = Quaternion(0.09711204, -0.00018307912, -0.0013885722, 0.9952725)
+bones/35/rotation = Quaternion(-0.5367089, 0.10281114, 0.025640339, 0.8370878)
+bones/36/rotation = Quaternion(-2.0221519e-08, 0.9676209, -0.2524082, 4.141743e-08)
+bones/37/position = Vector3(0.03799999, 0.025651794, 0.086776294)
+bones/37/rotation = Quaternion(-0.67970544, 0.67970544, -0.19493726, -0.19493727)
+
+[node name="Cube" parent="rig/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ORMMaterial3D_adlwp")
+
+[node name="GPencil" parent="." index="1"]
+visible = false
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "Idle"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="3"]
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer" index="0"]
+offset_left = 10.0
+offset_right = 638.0
+offset_bottom = 276.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nbgy1")
+script = ExtResource("3_nbgy1")
+
+[node name="TextEdit2" type="TextEdit" parent="CanvasLayer" index="1"]
+offset_left = 10.0
+offset_right = 590.0
+offset_bottom = 268.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nbgy1")
+text = "
+Idle: <None>
+Jog: Up"

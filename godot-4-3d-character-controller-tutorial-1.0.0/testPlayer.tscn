@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8ohynjdou01d"]
+
+[ext_resource type="Script" uid="uid://bbo3p8rgmpysi" path="res://test_player.gd" id="1_bjb7f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_407k3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bjb7f"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mcaov"]
+
+[node name="testPlayer" type="RigidBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_407k3")
+continuous_cd = true
+script = ExtResource("1_bjb7f")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.74952)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bjb7f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_mcaov")
+skeleton = NodePath("../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106683, 0)

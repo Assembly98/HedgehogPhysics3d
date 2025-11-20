@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://clnyime0nu8v2"]
+
+[ext_resource type="PackedScene" uid="uid://ds8k880onls34" path="res://dummy_copy.tscn" id="1_5ajrv"]
+[ext_resource type="Script" uid="uid://dwbyj3y4ivxwg" path="res://protoPhysicsK.gd" id="1_l6vex"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ppbkf"]
+
+[node name="testPlayerK" type="CharacterBody3D"]
+script = ExtResource("1_l6vex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ppbkf")
+
+[node name="dummyCopy" parent="." instance=ExtResource("1_5ajrv")]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, -0.3515826, 0)
+
+[node name="cameraOrigin" type="Node3D" parent="."]
+top_level = true
+
+[node name="Camera3D" type="Camera3D" parent="cameraOrigin"]
+transform = Transform3D(-1, -8.874545e-15, -8.7422684e-08, -2.2176831e-08, 0.9672899, 0.25367355, 8.456308e-08, 0.25367355, -0.9672899, 0, 1.6624082, -2.5787733)

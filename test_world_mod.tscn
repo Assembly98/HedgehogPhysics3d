@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctp6b3soqkfjn"]
+
+[ext_resource type="PackedScene" uid="uid://dlha3xvm3ckvc" path="res://TestWorldMod.blend" id="1_oy638"]
+[ext_resource type="Texture2D" uid="uid://b43lapose1mai" path="res://Road_01_Normal.png" id="2_ahmoe"]
+[ext_resource type="Texture2D" uid="uid://mxo4m62fls8o" path="res://ColorGrid.png" id="2_g1i1v"]
+[ext_resource type="Texture2D" uid="uid://d3tmr18a5b3o2" path="res://Floor_01b.png" id="4_drjjq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfnhq"]
+albedo_texture = ExtResource("2_ahmoe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahmoe"]
+albedo_texture = ExtResource("2_g1i1v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oy638"]
+albedo_texture = ExtResource("2_g1i1v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_614fe"]
+albedo_texture = ExtResource("4_drjjq")
+
+[node name="TestWorldMod" instance=ExtResource("1_oy638")]
+
+[node name="Cube_005" parent="." index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dfnhq")
+
+[node name="Plane_005" parent="." index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ahmoe")
+
+[node name="Plane_004" parent="." index="18"]
+surface_material_override/0 = SubResource("StandardMaterial3D_oy638")
+
+[node name="Plane_003" parent="." index="19"]
+material_override = SubResource("StandardMaterial3D_614fe")

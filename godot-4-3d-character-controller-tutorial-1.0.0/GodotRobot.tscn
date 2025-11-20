@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://do63n84bo2m3v"]
+
+[ext_resource type="Script" uid="uid://bui4mvxnltst8" path="res://godot_robot.gd" id="1_c3pwd"]
+[ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://player/gdquest_gobot/gobot_skin.tscn" id="1_rxnoc"]
+[ext_resource type="PackedScene" uid="uid://cgmwuqdyj412h" path="res://robo.tscn" id="3_itvnn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c3pwd"]
+radius = 0.409072
+height = 1.39615
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c3pwd"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_c3pwd")
+
+[node name="GobotSkin" parent="." instance=ExtResource("1_rxnoc")]
+unique_name_in_owner = true
+_left_eye_mat_override = ""
+_right_eye_mat_override = ""
+_open_eye = null
+_close_eye = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.701135, 0)
+shape = SubResource("CapsuleShape3D_c3pwd")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05103, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+transform = Transform3D(-1, 3.34553e-08, -8.07681e-08, 0, 0.92388, 0.382683, 8.74228e-08, 0.382683, -0.92388, 0, 0, 0)
+shape = SubResource("SphereShape3D_c3pwd")
+spring_length = 8.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+unique_name_in_owner = true
+
+[node name="robo" parent="." instance=ExtResource("3_itvnn")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0.643068, 0)
+visible = false
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.25, 0)

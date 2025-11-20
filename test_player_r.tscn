@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://4g8npb4mergh"]
+
+[ext_resource type="Script" uid="uid://dpuyf3toeukr8" path="res://protoPhysicsR.gd" id="1_8iojr"]
+[ext_resource type="Script" uid="uid://chvtvthu4ci2i" path="res://playerInput.gd" id="1_ie46h"]
+[ext_resource type="PackedScene" uid="uid://ds8k880onls34" path="res://dummy_copy.tscn" id="1_v3ttg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8iojr"]
+radius = 0.20361328
+height = 0.41540527
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ie46h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2aanr"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="testPlayerR" type="RigidBody3D"]
+script = ExtResource("1_8iojr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7341919, 0)
+shape = SubResource("CapsuleShape3D_8iojr")
+
+[node name="dummyCopy" parent="." instance=ExtResource("1_v3ttg")]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, -0.3515826, 0)
+
+[node name="moveScript" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("1_ie46h")
+player = NodePath("..")
+inputLerpSpd = 1.0
+utopiaLerpingSpd = 1.0
+
+[node name="CameraPiviot" type="Node3D" parent="."]
+top_level = true
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPiviot"]
+transform = Transform3D(1, 0, 0, 0, 0.8729391, -0.48782918, 0, 0.48782918, 0.8729391, 0, 0, 0)
+spring_length = -5.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPiviot/SpringArm3D"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.5, 0)
+debug_shape_custom_color = Color(0, 0.827451, 1, 1)
+debug_shape_thickness = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
+transform = Transform3D(0.055, 0, 0, 0, 0.885, 0, 0, 0, 0.055, 0, -0.602, 0)
+mesh = SubResource("CylinderMesh_ie46h")
+surface_material_override/0 = SubResource("StandardMaterial3D_2aanr")
