@@ -100,16 +100,16 @@ func generalPhysics() -> void:
 		
 	
 	if onGround:
-		rotation = Quaternion(-Vector3.UP, groundNormal) * rotation
+		rotation = Quaternion(Vector3.UP, groundNormal) * rotation
 		
 		keepNormal = groundNormal
 		keepNormalCounter = 0
 	else:
 		keepNormalCounter += 1
 		if (keepNormalCounter < 5):
-			rotation = Quaternion(-Vector3.UP, keepNormal) * rotation
+			rotation = Quaternion(Vector3.UP, keepNormal) * rotation
 		else:
-			rotation = Vector3(0, -rotation.y, 0)
+			rotation = Vector3(0, rotation.y, 0)
 	
 	print("rotation:", rotation)
 	
@@ -183,16 +183,16 @@ func slopePhysics():
 		addVelocity(addSpd)
 		wasOnAir = false
 	
-	#if (linear_velocity.length_squared() < slopeSpdLimit and SlopeRunningAngleLimit > groundNormal.y):
-		#transform.basis = Quaternion.IDENTITY
-		#addVelocity(groundNormal * 3)
-	#else:
-		#stickToground(GroundStickingPower)
+	if (linear_velocity.length_squared() < slopeSpdLimit and SlopeRunningAngleLimit > groundNormal.y):
+		transform.basis = Quaternion.IDENTITY
+		addVelocity(groundNormal * 3)
+	else:
+		stickToground(GroundStickingPower)
 	
-	#if (onGround and groundNormal.y < slopeStandingLimit):
-		#if linear_velocity.y > StartDownhillMultiplier:
-			#var force : Vector3 = Vector3(0, (slopeFactor * get_process_delta_time()), 0)
-			#addVelocity(force)
+	if (onGround and groundNormal.y < slopeStandingLimit):
+		if linear_velocity.y > StartDownhillMultiplier:
+			var force : Vector3 = Vector3(0, (slopeFactor * get_process_delta_time()), 0)
+			addVelocity(force)
 
 func stickToground(stickingPower : float):
 #	

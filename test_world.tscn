@@ -32,7 +32,9 @@ shadow_enabled = true
 
 [node name="testPlayerR" parent="." instance=ExtResource("2_gy3sr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.66269, 0, 0)
+axis_lock_angular_x = true
 axis_lock_angular_y = true
+axis_lock_angular_z = true
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.5, 0)
 acc = 20.0
