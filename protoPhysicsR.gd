@@ -100,16 +100,16 @@ func generalPhysics() -> void:
 		
 	
 	if onGround:
-		rotation = Quaternion(Vector3.UP, groundNormal) * rotation
+		rotation = Quaternion(-Vector3.UP, groundNormal) * rotation
 		
 		keepNormal = groundNormal
 		keepNormalCounter = 0
 	else:
 		keepNormalCounter += 1
 		if (keepNormalCounter < 5):
-			rotation = Quaternion(Vector3.UP, keepNormal) * rotation
+			rotation = Quaternion(-Vector3.UP, keepNormal) * rotation
 		else:
-			rotation = Vector3(0, rotation.y, 0)
+			rotation = Vector3(0, -rotation.y, 0)
 	
 	print("rotation:", rotation)
 	

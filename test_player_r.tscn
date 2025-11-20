@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8iojr"]
 radius = 0.20361328
-height = 0.41540527
+height = 2.0250854
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ie46h"]
 
@@ -18,7 +18,7 @@ albedo_color = Color(0, 0, 0, 1)
 script = ExtResource("1_8iojr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7341919, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07064819, 0)
 shape = SubResource("CapsuleShape3D_8iojr")
 
 [node name="dummyCopy" parent="." instance=ExtResource("1_v3ttg")]
