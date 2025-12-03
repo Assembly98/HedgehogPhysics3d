@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://4g8npb4mergh"]
+[gd_scene load_steps=9 format=3 uid="uid://4g8npb4mergh"]
 
 [ext_resource type="Script" uid="uid://dpuyf3toeukr8" path="res://protoPhysicsR.gd" id="1_8iojr"]
 [ext_resource type="Script" uid="uid://chvtvthu4ci2i" path="res://playerInput.gd" id="1_ie46h"]
 [ext_resource type="PackedScene" uid="uid://ds8k880onls34" path="res://dummy_copy.tscn" id="1_v3ttg"]
+
+[sub_resource type="Curve" id="Curve_ie46h"]
+_limits = [0.0, 30.0, 0.0, 30.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(30, 30), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8iojr"]
 radius = 0.20361328
@@ -14,8 +19,14 @@ height = 2.0250854
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ie46h"]
+radius = 0.28747353
+
 [node name="testPlayerR" type="RigidBody3D"]
 script = ExtResource("1_8iojr")
+accoverSpd = SubResource("Curve_ie46h")
+tangentDragOverSpd = SubResource("Curve_ie46h")
+SlopePowerOverSpeed = SubResource("Curve_ie46h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07064819, 0)
@@ -41,11 +52,23 @@ spring_length = -5.0
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+visible = false
+visibility_parent = NodePath("MeshInstance3D")
 target_position = Vector3(0, -1.5, 0)
+collide_with_areas = true
 debug_shape_custom_color = Color(0, 0.827451, 1, 1)
 debug_shape_thickness = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
 transform = Transform3D(0.055, 0, 0, 0, 0.885, 0, 0, 0, 0.055, 0, -0.602, 0)
+visible = false
 mesh = SubResource("CylinderMesh_ie46h")
 surface_material_override/0 = SubResource("StandardMaterial3D_2aanr")
+
+[node name="staticbody" type="StaticBody3D" parent="."]
+collision_layer = 0
+input_ray_pickable = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="staticbody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8335737, 0)
+shape = SubResource("SphereShape3D_ie46h")

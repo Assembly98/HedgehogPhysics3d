@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b74t3ywj3xp7i"]
+[gd_scene load_steps=9 format=3 uid="uid://b74t3ywj3xp7i"]
 
 [ext_resource type="PackedScene" uid="uid://4g8npb4mergh" path="res://test_player_r.tscn" id="2_gy3sr"]
 [ext_resource type="PackedScene" uid="uid://ctp6b3soqkfjn" path="res://test_world_mod.tscn" id="3_1lwx6"]
@@ -14,6 +14,11 @@ sky_material = SubResource("ProceduralSkyMaterial_dxppu")
 background_mode = 2
 sky = SubResource("Sky_gy3sr")
 tonemap_mode = 2
+
+[sub_resource type="Curve" id="Curve_gy3sr"]
+_limits = [0.0, 30.0, 0.0, 30.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(29.23208, 30), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gy3sr"]
 size = Vector3(36.418365, 1.3754883, 46.6886)
@@ -31,14 +36,21 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="testPlayerR" parent="." instance=ExtResource("2_gy3sr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.66269, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.5453, 8.993584, -13.596924)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.5, 0)
+can_sleep = false
 acc = 20.0
 maxFallSpd = 30.0
+AccellShiftOverSpeed = 1.0
+TangentialDragShiftSpeed = 1.0
+TangentialDrag = 1.0
+SlopePowerShiftSpeed = 1.0
+accoverSpd = SubResource("Curve_gy3sr")
+tangentDragOverSpd = SubResource("Curve_gy3sr")
 
 [node name="TestWorldMod" parent="." instance=ExtResource("3_1lwx6")]
 
