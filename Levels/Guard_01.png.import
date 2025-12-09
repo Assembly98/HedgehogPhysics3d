@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b43lapose1mai"
-path.s3tc="res://.godot/imported/Road_01_Normal.png-4dffb99f18f3e6c88526583b977005d8.s3tc.ctex"
+uid="uid://c3q10kd5p04ld"
+path.s3tc="res://.godot/imported/Guard_01.png-1e3f63572e17b36d4d04bf70d17fba3a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Road_01_Normal.png"
-dest_files=["res://.godot/imported/Road_01_Normal.png-4dffb99f18f3e6c88526583b977005d8.s3tc.ctex"]
+source_file="res://Levels/Guard_01.png"
+dest_files=["res://.godot/imported/Guard_01.png-1e3f63572e17b36d4d04bf70d17fba3a.s3tc.ctex"]
 
 [params]
 

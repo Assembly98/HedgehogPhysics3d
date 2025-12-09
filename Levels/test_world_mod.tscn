@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://ctp6b3soqkfjn"]
 
-[ext_resource type="PackedScene" uid="uid://daan7jltgwu4u" path="res://TestWorldMod.blend" id="1_oy638"]
-[ext_resource type="Texture2D" uid="uid://c3q10kd5p04ld" path="res://Guard_01.png" id="2_ahmoe"]
-[ext_resource type="Texture2D" uid="uid://mxo4m62fls8o" path="res://ColorGrid.png" id="2_g1i1v"]
-[ext_resource type="Texture2D" uid="uid://d3tmr18a5b3o2" path="res://Floor_01b.png" id="4_drjjq"]
+[ext_resource type="PackedScene" uid="uid://daan7jltgwu4u" path="res://Levels/TestWorldMod.blend" id="1_oy638"]
+[ext_resource type="Texture2D" uid="uid://c3q10kd5p04ld" path="res://Levels/Guard_01.png" id="2_ahmoe"]
+[ext_resource type="Texture2D" uid="uid://mxo4m62fls8o" path="res://Levels/ColorGrid.png" id="2_g1i1v"]
+[ext_resource type="Texture2D" uid="uid://d3tmr18a5b3o2" path="res://Levels/Floor_01b.png" id="4_drjjq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drjjq"]
 albedo_texture = ExtResource("2_ahmoe")

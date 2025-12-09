@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d18a4ed62la0k"]
 
-[ext_resource type="PackedScene" uid="uid://dlha3xvm3ckvc" path="res://TestWorldMod.blend" id="1_4bcfc"]
-[ext_resource type="PackedScene" uid="uid://4g8npb4mergh" path="res://test_player_r.tscn" id="2_opqhh"]
+[ext_resource type="PackedScene" path="res://TestWorldMod.blend" id="1_4bcfc"]
+[ext_resource type="PackedScene" uid="uid://4g8npb4mergh" path="res://PlayerR/test_player_r.tscn" id="2_opqhh"]
 
 [node name="TestWorldMod" instance=ExtResource("1_4bcfc")]
 

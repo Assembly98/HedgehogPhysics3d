@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=3 uid="uid://4g8npb4mergh"]
+
+[ext_resource type="Script" uid="uid://dpuyf3toeukr8" path="res://PlayerR/protoPhysicsR.gd" id="1_8iojr"]
+[ext_resource type="Script" uid="uid://chvtvthu4ci2i" path="res://PlayerR/playerInput.gd" id="1_ie46h"]
+[ext_resource type="PackedScene" uid="uid://ds8k880onls34" path="res://playerGeneral/dummy_copy.tscn" id="1_v3ttg"]
+[ext_resource type="Script" uid="uid://cftgo2eb5vl7w" path="res://playerGeneral/dummy_copy.gd" id="4_2aanr"]
+
+[sub_resource type="Curve" id="Curve_ie46h"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2aanr"]
+_limits = [0.95, 1.05, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2q1h8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.24744031, 0.15127385), 0.0, 0.0, 0, 0, Vector2(1, 0.0063694715), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8iojr"]
+radius = 0.20361328
+height = 2.0250854
+
+[sub_resource type="Curve" id="Curve_gjf57"]
+_limits = [0.0, 21.0, 0.0, 1.0]
+_data = [Vector2(0, 20.042824), 0.0, 0.0, 0, 0, Vector2(0.21672356, 20.86326), 0.0, 0.0, 0, 0, Vector2(0.37030718, 4.591284), 0.0, 0.0, 0, 0, Vector2(0.9880545, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_0aaq1"]
+_limits = [0.0, 15.0, 0.0, 1.0]
+_data = [Vector2(0, 15), 0.0, 0.0, 0, 0, Vector2(0.07679181, 15), 0.0, 0.0, 0, 0, Vector2(0.38054606, 4.7531834), 0.0, 0.0, 0, 0, Vector2(1, 4.546178), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ie46h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2aanr"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="testPlayerR" type="RigidBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+can_sleep = false
+lock_rotation = true
+custom_integrator = true
+continuous_cd = true
+script = ExtResource("1_8iojr")
+slopeFactor = -2.3
+AccellShiftOverSpeed = 1.0
+TangentialDragShiftSpeed = 1.0
+TangentialDrag = 4.0
+SlopePowerShiftSpeed = 1.0
+accoverSpd = SubResource("Curve_ie46h")
+tangentDragOverSpd = SubResource("Curve_2aanr")
+SlopePowerOverSpeed = SubResource("Curve_2q1h8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07064819, 0)
+shape = SubResource("CapsuleShape3D_8iojr")
+
+[node name="dummyCopy" parent="." instance=ExtResource("1_v3ttg")]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, -0.30485606, 0)
+
+[node name="moveScript" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("1_ie46h")
+player = NodePath("..")
+InputLerpingRateOverSpeed = SubResource("Curve_gjf57")
+UtopiaInputLerpingRateOverSpeed = SubResource("Curve_0aaq1")
+utopiaTurning = true
+inputLerpSpd = 1.0
+utopiaIntesity = 3.0
+utopiaInitialInputLerpSpd = 40.0
+utopiaLerpingSpd = 1.0
+initalInputMag = 1.0
+initalLerpedInput = 1.0
+
+[node name="CameraPiviot" type="Node3D" parent="."]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPiviot"]
+transform = Transform3D(1, 0, 0, 0, 0.8729391, -0.48782918, 0, 0.48782918, 0.8729391, 0, 0, 0)
+spring_length = -8.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPiviot/SpringArm3D"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.5, 0)
+hit_from_inside = true
+debug_shape_custom_color = Color(0, 0.827451, 1, 1)
+debug_shape_thickness = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
+transform = Transform3D(0.055, 0, 0, 0, 0.885, 0, 0, 0, 0.055, 0, -0.602, 0)
+mesh = SubResource("CylinderMesh_ie46h")
+surface_material_override/0 = SubResource("StandardMaterial3D_2aanr")
+
+[node name="AnimationControlTemp" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("4_2aanr")
+player = NodePath("..")
+
+[node name="wallDetector" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 0.4)

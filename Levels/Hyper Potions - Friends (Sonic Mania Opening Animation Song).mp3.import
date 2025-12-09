@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://es4op2gvwx1h"
+path="res://.godot/imported/Hyper Potions - Friends (Sonic Mania Opening Animation Song).mp3-be4ce26089ae3dfa350ba6f514745ad7.mp3str"
+
+[deps]
+
+source_file="res://Levels/Hyper Potions - Friends (Sonic Mania Opening Animation Song).mp3"
+dest_files=["res://.godot/imported/Hyper Potions - Friends (Sonic Mania Opening Animation Song).mp3-be4ce26089ae3dfa350ba6f514745ad7.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=10.0
+bpm=0.0
+beat_count=0
+bar_beats=4

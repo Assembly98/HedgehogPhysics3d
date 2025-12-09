@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://daan7jltgwu4u"
-path="res://.godot/imported/TestWorldMod.blend-000e0d517326ac737c19b1fac7c86e29.scn"
+uid="uid://cvupmen3rrl8p"
+path="res://.godot/imported/dummyCopy.blend-c7973e602f82a35de70eb94d76429430.scn"
 
 [deps]
 
-source_file="res://TestWorldMod.blend"
-dest_files=["res://.godot/imported/TestWorldMod.blend-000e0d517326ac737c19b1fac7c86e29.scn"]
+source_file="res://playerGeneral/dummyCopy.blend"
+dest_files=["res://.godot/imported/dummyCopy.blend-c7973e602f82a35de70eb94d76429430.scn"]
 
 [params]
 
@@ -29,7 +29,7 @@ meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
-animation/fps=30
+animation/fps=24.0
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false

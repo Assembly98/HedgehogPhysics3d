@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3tmr18a5b3o2"
-path.s3tc="res://.godot/imported/Floor_01b.png-c94d4e446543f3bd86969ba9bac6289b.s3tc.ctex"
+uid="uid://mxo4m62fls8o"
+path.s3tc="res://.godot/imported/ColorGrid.png-e4c7c675a8ed962bde0eedce62d1aaf7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Floor_01b.png"
-dest_files=["res://.godot/imported/Floor_01b.png-c94d4e446543f3bd86969ba9bac6289b.s3tc.ctex"]
+source_file="res://Levels/ColorGrid.png"
+dest_files=["res://.godot/imported/ColorGrid.png-e4c7c675a8ed962bde0eedce62d1aaf7.s3tc.ctex"]
 
 [params]
 

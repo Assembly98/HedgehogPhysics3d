@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2p5uwfku6w57"]
+
+[ext_resource type="PackedScene" uid="uid://cjgvatchgjoma" path="res://Levels/customTestLevel.blend" id="1_0wjro"]
+[ext_resource type="Texture2D" uid="uid://mxo4m62fls8o" path="res://Levels/ColorGrid.png" id="2_fnf2d"]
+[ext_resource type="PackedScene" uid="uid://4g8npb4mergh" path="res://PlayerR/test_player_r.tscn" id="3_fnf2d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fnf2d"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_h4scc"]
+sky_material = SubResource("ProceduralSkyMaterial_fnf2d")
+
+[sub_resource type="Environment" id="Environment_shbyo"]
+background_mode = 2
+sky = SubResource("Sky_h4scc")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4scc"]
+albedo_texture = ExtResource("2_fnf2d")
+
+[node name="customTestLevel" instance=ExtResource("1_0wjro")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_shbyo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Plane" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_h4scc")
+
+[node name="testPlayerR" parent="." index="3" instance=ExtResource("3_fnf2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -476, 4, -533)
+acc = 1.5
+topSpd = 210.0
+maxSpd = 800.0
+maxFallSpd = 30.0
+slopeFactor = -5.0

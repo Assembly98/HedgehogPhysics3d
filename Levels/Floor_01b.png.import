@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3q10kd5p04ld"
-path.s3tc="res://.godot/imported/Guard_01.png-89b3102bcee8434a63b210f82ba47795.s3tc.ctex"
+uid="uid://d3tmr18a5b3o2"
+path.s3tc="res://.godot/imported/Floor_01b.png-158f8a35515e2deade9f1676cf6656fd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Guard_01.png"
-dest_files=["res://.godot/imported/Guard_01.png-89b3102bcee8434a63b210f82ba47795.s3tc.ctex"]
+source_file="res://Levels/Floor_01b.png"
+dest_files=["res://.godot/imported/Floor_01b.png-158f8a35515e2deade9f1676cf6656fd.s3tc.ctex"]
 
 [params]
 

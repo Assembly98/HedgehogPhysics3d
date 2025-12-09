@@ -4,6 +4,8 @@ extends Node
 
 var move : Vector3
 var camForward : Vector3
+@export var InputLerpingRateOverSpeed : Curve
+@export var UtopiaInputLerpingRateOverSpeed : Curve
 @export var utopiaTurning : bool
 @export var inputLerpSpd : float
 var utopiaInput : Vector3
@@ -21,6 +23,10 @@ var utopiaInput : Vector3
 var _camera_input_direction := Vector2.ZERO
 
 @onready var _camera_pivot = $"../CameraPiviot"
+@onready var cam = $"../CameraPiviot/SpringArm3D/Camera3D"
+
+var lastMoveDir := Vector3.BACK
+var rotationSpd = 12.0
 
 
 func _input(event: InputEvent) -> void:
@@ -40,6 +46,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	inputLerpSpd = InputLerpingRateOverSpeed.sample(((player.linear_velocity.length_squared() / player.maxSpd)/player.maxSpd))
+	utopiaLerpingSpd = UtopiaInputLerpingRateOverSpeed.sample(((player.linear_velocity.length_squared() / player.maxSpd)/player.maxSpd))
 	
 	var hInput = Input.get_axis("Right", "Left")
 	var vInput = Input.get_axis("Down", "Up")
@@ -63,14 +72,14 @@ func _process(delta: float) -> void:
 		
 		if (!utopiaTurning):
 			if (moveInp != Vector3.ZERO):
-				var transformedInput : Vector3 = Quaternion(axis, angle) * (_camera_pivot.transform.basis * moveInp)
+				var transformedInput : Vector3 = Quaternion(axis, angle).normalized() * (_camera_pivot.transform.basis * moveInp)
 				transformedInput = player.global_transform.basis.inverse() * transformedInput
 				transformedInput.y = 0.0
 				player.rawInput = transformedInput
 				moveInp = move.lerp(transformedInput, inputLerpSpd * delta)
 				#rint("moveInp: ", moveInp)
 			else:
-				var transformedInput : Vector3 = Quaternion(axis, angle) * (_camera_pivot.transform.basis * moveInp)
+				var transformedInput : Vector3 = Quaternion(axis, angle).normalized() * (_camera_pivot.transform.basis * moveInp)
 				transformedInput = player.global_transform.basis.inverse() * transformedInput
 				transformedInput.y = 0.0
 				player.rawInput = transformedInput
@@ -78,13 +87,13 @@ func _process(delta: float) -> void:
 				
 		else:
 			if (moveInp != Vector3.ZERO):
-				var transformedInput : Vector3 = Quaternion(axis, angle) * (_camera_pivot.transform.basis * moveInp)
+				var transformedInput : Vector3 = Quaternion(axis, angle).normalized() * (_camera_pivot.transform.basis * moveInp)
 				transformedInput = player.global_transform.basis.inverse() * transformedInput
 				transformedInput.y = 0.0
 				player.rawInput = transformedInput
 				moveInp = move.lerp(transformedInput, utopiaLerpingSpd * delta)
 			else:
-				var transformedInput : Vector3 = Quaternion(axis, angle) * (_camera_pivot.transform.basis * moveInp)
+				var transformedInput : Vector3 = Quaternion(axis, angle).normalized() * (_camera_pivot.transform.basis * moveInp)
 				transformedInput = player.global_transform.basis.inverse() * transformedInput
 				transformedInput.y = 0.0
 				player.rawInput = transformedInput
@@ -109,12 +118,31 @@ func _physics_process(delta: float) -> void:
 
 	_camera_input_direction = Vector2.ZERO
 	
+	#_camera_pivot.global_rotation_degrees.y += (Input.get_axis("cameraRight", "cameraLeft") * 90) * delta
+	#
+	#_camera_pivot.global_rotation_degrees.x += (Input.get_axis("cameraDown", "cameraUp") * 90) * delta
+	#_camera_pivot.global_rotation.x = clamp(_camera_pivot.global_rotation.x, -PI/6.0, PI/3.0)
+	#
 	player.moveInput = move
+	
+	var rawInput := Input.get_vector("Left", "Right", "Up", "Down")
+	var forward = cam.global_basis.z
+	var right = cam.global_basis.x
+	var moveDir = forward * rawInput.y + right * rawInput.x
+	moveDir.y = 0.0
+	moveDir = moveDir.normalized()
+	
+	if move.length() > 0:
+		lastMoveDir = move
+	else:
+		lastMoveDir = Vector3.ZERO
+	var targetAngle := Vector3.BACK.signed_angle_to(lastMoveDir, Vector3.UP)
+	$"../dummyCopy".rotation.y = lerp_angle($"../dummyCopy".rotation.y, targetAngle, rotationSpd * delta)
 	
 	#_camera_pivot.position = player.position
 	
-	print("camPos: ", _camera_pivot.position)
-	print("playerPos: ", player.position)
+	#print("camPos: ", _camera_pivot.position)
+	#print("playerPos: ", player.position)
 	
 	print("move: ", player.moveInput)
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cvupmen3rrl8p"
-path="res://.godot/imported/dummyCopy.blend-d2eccac80e5b6f5ffbb1759a433b3906.scn"
+uid="uid://cjgvatchgjoma"
+path="res://.godot/imported/customTestLevel.blend-1b8cf35a1f553a97c6dcfc18629487da.scn"
 
 [deps]
 
-source_file="res://dummyCopy.blend"
-dest_files=["res://.godot/imported/dummyCopy.blend-d2eccac80e5b6f5ffbb1759a433b3906.scn"]
+source_file="res://Levels/customTestLevel.blend"
+dest_files=["res://.godot/imported/customTestLevel.blend-1b8cf35a1f553a97c6dcfc18629487da.scn"]
 
 [params]
 
@@ -29,7 +29,7 @@ meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
-animation/fps=24.0
+animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
