@@ -77,6 +77,9 @@ func _physics_process(delta: float) -> void:
 	$CameraPiviot.global_position = global_position
 	#look_at(linear_velocity, Vector3.UP)
 
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	pass
+
 func generalPhysics() -> void:
 	
 	if rawInput.length_squared() >= 0.03:
@@ -132,17 +135,17 @@ func generalPhysics() -> void:
 		#transform.basis = Basis(rotAxis.normalized(), (angle)) * transform.basis
 		#$dummyCopy.global_rotation = Basis(rotAxis.normalized(), angle) * $dummyCopy.global_rotation
 		
-		keepNormal = groundNormal
-		keepNormalCounter = 0
+		#keepNormal = groundNormal
+		#keepNormalCounter = 0
+	#else:
+		#keepNormalCounter += 1
+		#if (keepNormalCounter < 5):
+			#alignWithFloor($RayCast3D.get_collision_normal())
+			#global_transform = global_transform.interpolate_with(xForm, 0.3)
+			##transform.basis = Basis(rotAxis.normalized(), angle) * transform.basis
+		##	$dummyCopy.global_rotation = Basis(rotAxis.normalized(), angle) * $dummyCopy.global_rotation
 	else:
-		keepNormalCounter += 1
-		if (keepNormalCounter < 5):
-			alignWithFloor($RayCast3D.get_collision_normal())
-			global_transform = global_transform.interpolate_with(xForm, 0.3)
-			#transform.basis = Basis(rotAxis.normalized(), angle) * transform.basis
-		#	$dummyCopy.global_rotation = Basis(rotAxis.normalized(), angle) * $dummyCopy.global_rotation
-		else:
-			rotation = Vector3(0, rotation.y, 0)
+		rotation = Vector3(0, rotation.y, 0)
 	
 	print("rotation:", transform.basis)
 	

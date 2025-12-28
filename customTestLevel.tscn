@@ -20,6 +20,7 @@ tonemap_mode = 2
 albedo_texture = ExtResource("2_fnf2d")
 
 [node name="customTestLevel" instance=ExtResource("1_0wjro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35.98667)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
 environment = SubResource("Environment_shbyo")
